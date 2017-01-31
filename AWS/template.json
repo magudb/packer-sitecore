@@ -1,0 +1,34 @@
+{
+  "variables": {    
+    "version": "0.0.1"
+  },
+  "builders": [
+    {
+      "type": "amazon-ebs",    
+      "region": "eu-west-1",
+      "source_ami": "ami-29f7dd5a",
+      "instance_type": "t2.micro",
+      "communicator": "winrm",
+      "winrm_username": "Administrator",
+      "winrm_use_ssl": true,
+      "winrm_insecure": true,
+      "user_data_file": "bootstrap-aws.txt",
+      "ami_name": "Sitecore AMI {{user `version`}}"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "../Website.zip",
+      "destination": "c:\\temp\\Website.zip"
+    },
+    {
+      "type": "powershell",
+      "scripts": [
+        "./install-feature.ps1",
+        "./configure-website.ps1"
+      ]
+    }
+    
+  ]
+}
