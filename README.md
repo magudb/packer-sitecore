@@ -2,6 +2,6 @@
 
 #Requirements
  * http://Packer.io 
- * https://github.com/packer-community/packer-windows-plugins
- * https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html#cli-config-files
+ * AWS, GCE or Azure account
+ 
 
