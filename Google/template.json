@@ -1,0 +1,30 @@
+{
+  "variables": {
+   
+  },
+  "builders": [
+    {
+     "type": "googlecompute",
+    "account_file": "C:\\Users\\mud\\AppData\\Roaming\\gcloud\\creds.json",
+    "project_id": "sigma-heuristic-157423",
+    "disk_size": 50,
+    "source_image": "windows-server-2016-dc-core-v20170117",
+    "zone": "europe-west1-c",
+    "ssh_username": "administrator"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "file",
+      "source": "../Website.zip",
+      "destination": "c:\\temp\\Website.zip"
+    },
+    {
+      "type": "powershell",
+      "scripts": [
+        "./install-feature.ps1",
+        "./configure-website.ps1"
+      ]
+    }
+  ]
+}
